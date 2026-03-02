@@ -1,0 +1,309 @@
+<div class="flex flex-col h-full overflow-hidden bg-s1 border-l border-border shrink-0">
+    <!-- Header -->
+    <div
+        class="px-4 py-1* border-b border-border font-mono text-[0.65rem] text-muted tracking-widest uppercase flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <span>// Properties</span>
+        </div>
+        <button class="panel-close-btn" (click)="close()" title="Close">✕</button>
+    </div>
+
+    <!-- Body -->
+    <div class="flex-1 overflow-y-auto px-4 py-3 scrollbar-thin">
+        @if (selectedComp(); as comp) {
+        <!-- Rotation -->
+        <div class="section-title">Transform</div>
+        <div class="flex gap-1.5 mb-3">
+            <button class="palette-btn flex-1" (click)="rotateSelected()">↻ Rotate 90°</button>
+        </div>
+
+        <!-- R -->
+        @if (comp.type === 'R') {
+        <div class="section-title">Resistor</div>
+        <div class="field">
+            <label>Name</label>
+            <input [value]="comp.props.name || ''" (input)="updateProp('name', $any($event.target).value)"
+                placeholder="R_{{ comp.id }}" />
+        </div>
+        <div class="field">
+            <label>Value</label>
+            <input [value]="comp.props.value" (input)="updateProp('value', $any($event.target).value)" />
+        </div>
+        }
+
+        <!-- C -->
+        @if (comp.type === 'C') {
+        <div class="section-title">Capacitor</div>
+        <div class="field">
+            <label>Name</label>
+            <input [value]="comp.props.name || ''" (input)="updateProp('name', $any($event.target).value)"
+                placeholder="C_{{ comp.id }}" />
+        </div>
+        <div class="field">
+            <label>Value</label>
+            <input [value]="comp.props.value" (input)="updateProp('value', $any($event.target).value)" />
+        </div>
+        }
+
+        <!-- L -->
+        @if (comp.type === 'L') {
+        <div class="section-title">Inductor</div>
+        <div class="field">
+            <label>Name</label>
+            <input [value]="comp.props.name || ''" (input)="updateProp('name', $any($event.target).value)"
+                placeholder="L_{{ comp.id }}" />
+        </div>
+        <div class="field">
+            <label>Value</label>
+            <input [value]="comp.props.value" (input)="updateProp('value', $any($event.target).value)" />
+        </div>
+        }
+
+        <!-- V -->
+        @if (comp.type === 'V') {
+        <div class="section-title">Voltage Source</div>
+        <div class="field">
+            <label>Name</label>
+            <input [value]="comp.props.name || ''" (input)="updateProp('name', $any($event.target).value)"
+                placeholder="V_{{ comp.id }}" />
+        </div>
+        <div class="field">
+            <label>Waveform</label>
+            <select [value]="comp.props.waveform" (change)="updateProp('waveform', $any($event.target).value)">
+                <option value="SIN">SIN</option>
+                <option value="PULSE">PULSE</option>
+                <option value="DC">DC</option>
+                <option value="NOISE">NOISE</option>
+            </select>
+        </div>
+
+        @if (comp.props.waveform === 'SIN') {
+        <div class="field"><label>Offset (V)</label>
+            <input [value]="comp.props.offset" (input)="updateProp('offset', $any($event.target).value)" />
+        </div>
+        <div class="field"><label>Amplitude (V)</label>
+            <input [value]="comp.props.amp" (input)="updateProp('amp', $any($event.target).value)" />
+        </div>
+        <div class="field"><label>Frequency (Hz)</label>
+            <input [value]="comp.props.freq" (input)="updateProp('freq', $any($event.target).value)" />
+        </div>
+        <div class="font-mono text-[0.62rem] text-muted leading-relaxed mt-1">SIN(offset amp freq)</div>
+        }
+
+        @if (comp.props.waveform === 'PULSE') {
+        <div class="field"><label>Low V (V)</label>
+            <input [value]="comp.props.pulse_v1" (input)="updateProp('pulse_v1', $any($event.target).value)" />
+        </div>
+        <div class="field"><label>High V (V)</label>
+            <input [value]="comp.props.pulse_v2" (input)="updateProp('pulse_v2', $any($event.target).value)" />
+        </div>
+        <div class="field"><label>Delay (s)</label>
+            <input [value]="comp.props.pulse_td" (input)="updateProp('pulse_td', $any($event.target).value)" />
+        </div>
+        <div class="field"><label>Rise time (s)</label>
+            <input [value]="comp.props.pulse_tr" (input)="updateProp('pulse_tr', $any($event.target).value)" />
+        </div>
+        <div class="field"><label>Fall time (s)</label>
+            <input [value]="comp.props.pulse_tf" (input)="updateProp('pulse_tf', $any($event.target).value)" />
+        </div>
+        <div class="field"><label>Width (s)</label>
+            <input [value]="comp.props.pulse_pw" (input)="updateProp('pulse_pw', $any($event.target).value)" />
+        </div>
+        <div class="field"><label>Period (s)</label>
+            <input [value]="comp.props.pulse_per" (input)="updateProp('pulse_per', $any($event.target).value)" />
+        </div>
+        }
+
+        @if (comp.props.waveform === 'DC') {
+        <div class="field"><label>DC Voltage (V)</label>
+            <input [value]="comp.props.dc" (input)="updateProp('dc', $any($event.target).value)" />
+        </div>
+        }
+
+        @if (comp.props.waveform === 'NOISE') {
+        <div class="field"><label>Amplitude (V)</label>
+            <input [value]="comp.props.amp" (input)="updateProp('amp', $any($event.target).value)" />
+        </div>
+        <div class="field"><label>Offset (V)</label>
+            <input [value]="comp.props.offset" (input)="updateProp('offset', $any($event.target).value)" />
+        </div>
+        <div class="font-mono text-[0.62rem] text-muted leading-relaxed mt-1">Gaussian white noise<br>TRNOISE(amp td
+            nalpha namp)</div>
+        }
+        }
+
+        <!-- GND -->
+        @if (comp.type === 'GND') {
+        <div class="section-title">Ground (GND)</div>
+        <p class="text-[0.7rem] text-muted font-mono">0V reference node</p>
+        }
+
+        <!-- PROBE -->
+        @if (comp.type === 'PROBE') {
+        <div class="section-title" [style.color]="probeColor()">⊙ Voltage Probe {{ comp.props.label }}</div>
+        <div class="field">
+            <label>Name</label>
+            <input [value]="comp.props.label" (input)="updateProp('label', $any($event.target).value)" />
+        </div>
+        <div class="fc-box" [style.color]="probeColor()" [style.border-color]="probeColor() + '30'">
+            <small>Measured node</small>
+            @if (probeNodeResolved(); as node) {
+            {{ node }}
+            } @else {
+            <span class="text-muted">Not connected</span>
+            }
+        </div>
+        }
+
+        <!-- IPROBE -->
+        @if (comp.type === 'IPROBE') {
+        <div class="section-title" [style.color]="probeColor()">⊗ Current Probe {{ comp.props.label }}</div>
+        <div class="field">
+            <label>Name</label>
+            <input [value]="comp.props.label" (input)="updateProp('label', $any($event.target).value)" />
+        </div>
+        <div class="fc-box" [style.color]="probeColor()" [style.border-color]="probeColor() + '30'">
+            <small>Current path (0V source)</small>
+            @if (probeNodeResolved(); as node) {
+            {{ node }}
+            } @else {
+            <span class="text-muted">Not connected</span>
+            }
+        </div>
+        <div class="font-mono text-[0.62rem] text-muted leading-relaxed mt-1">
+            Inline ammeter — measures current<br>through the component (0Ω insertion)
+        </div>
+        }
+
+        <!-- NET labels -->
+        @if (comp.type === 'NET_IN' || comp.type === 'NET_OUT' || comp.type === 'NET_INOUT') {
+        <div class="section-title" style="color:#4dd0e1">
+            @if (comp.type === 'NET_IN') { ▷ Net In }
+            @else if (comp.type === 'NET_OUT') { ◁ Net Out }
+            @else { ⬡ Net In/Out }
+        </div>
+        <div class="field">
+            <label>Label</label>
+            <input [value]="comp.props.label || ''" (input)="updateProp('label', $any($event.target).value)"
+                placeholder="e.g. VIN, VOUT" />
+        </div>
+        <div class="font-mono text-[0.62rem] text-muted leading-relaxed mt-1">
+            Names the connected node.<br>All nets with the same label share the same electrical node.
+        </div>
+        }
+
+        <!-- SPICE override (for R, C, L, V) -->
+        @if (comp.type === 'R' || comp.type === 'C' || comp.type === 'L' || comp.type === 'V') {
+        <div class="spice-override">
+            <div class="font-mono text-[0.62rem] text-muted tracking-widest uppercase mb-1">SPICE Override</div>
+            <input class="spice-input" [value]="comp.props.spiceLine || ''"
+                (input)="updateProp('spiceLine', $any($event.target).value)" placeholder="Empty = auto-generated"
+                spellcheck="false" />
+            <div class="font-mono text-[0.56rem] text-muted leading-relaxed mt-1">
+                If set, replaces the auto-generated SPICE line entirely.<br>
+            </div>
+        </div>
+        }
+
+        <!-- Library component properties (D, Q, M, OPAMP) -->
+        @if (libraryDef(); as def) {
+        <div class="section-title" [style.color]="def.color">{{ def.symbol }} {{ def.name }}</div>
+        <div class="field">
+            <label>Name</label>
+            <input [value]="comp.props.name || ''" (input)="updateProp('name', $any($event.target).value)"
+                [placeholder]="def.spicePrefix + '_' + comp.id" />
+        </div>
+        <div class="field">
+            <label>Model</label>
+            <input [value]="comp.props.model || def.defaultModelName"
+                (input)="updateProp('model', $any($event.target).value)" />
+        </div>
+        @if (comp.props.partNumber) {
+        <div class="fc-box" [style.color]="def.color" [style.border-color]="def.color + '30'">
+            <small>Specific part</small>
+            {{ comp.props.partNumber }}
+        </div>
+        }
+        @if (comp.type === 'M_NMOS' || comp.type === 'M_PMOS') {
+        <div class="field">
+            <label>W (width)</label>
+            <input [value]="comp.props.w || '10u'" (input)="updateProp('w', $any($event.target).value)" />
+        </div>
+        <div class="field">
+            <label>L (length)</label>
+            <input [value]="comp.props.l || '1u'" (input)="updateProp('l', $any($event.target).value)" />
+        </div>
+        }
+
+        <!-- Simulation Parameters -->
+        @if (editableParams().length > 0) {
+        <div class="sim-params-header" (click)="toggleSimParams()">
+            <span class="sim-params-toggle">{{ simParamsExpanded() ? '▾' : '▸' }}</span>
+            <span>Simulation Parameters</span>
+        </div>
+        @if (simParamsExpanded()) {
+        <div class="sim-params-grid">
+            @for (param of editableParams(); track param.key) {
+            <div class="sim-param-row">
+                <label [title]="param.tooltip || ''">
+                    {{ param.label }}
+                    @if (param.unit) {
+                    <span class="param-unit">({{ param.unit }})</span>
+                    }
+                </label>
+                <input [value]="getSimParamValue(comp, param.key)"
+                    (input)="updateSimParam(param.key, $any($event.target).value)" [placeholder]="param.defaultValue"
+                    spellcheck="false" />
+            </div>
+            }
+        </div>
+        <div class="font-mono text-[0.56rem] text-muted leading-relaxed mt-1">
+            Leave empty to use default values. Only changed parameters are included in the model.
+        </div>
+        }
+        }
+
+        <div class="font-mono text-[0.62rem] text-muted leading-relaxed mt-1">{{ def.description }}</div>
+
+        <!-- Custom Model Definition -->
+        <div class="custom-model-section">
+            <div class="custom-model-header" (click)="toggleCustomModel()">
+                <span class="sim-params-toggle">{{ customModelExpanded() ? '▾' : '▸' }}</span>
+                <span>Custom Model Definition</span>
+            </div>
+            @if (customModelExpanded()) {
+            <textarea class="custom-model-input" [value]="comp.props.customModel || ''"
+                (input)="updateProp('customModel', $any($event.target).value)"
+                placeholder="Paste a .model or .subckt block here&#10;This overrides the auto-generated model"
+                spellcheck="false" rows="5"></textarea>
+            <div class="font-mono text-[0.56rem] text-muted leading-relaxed mt-1">
+                Paste a complete <span class="text-accent">.model</span> or
+                <span class="text-accent">.subckt</span> block.
+                This replaces the auto-generated model definition entirely.
+            </div>
+            }
+        </div>
+
+        <div class="spice-override">
+            <div class="font-mono text-[0.62rem] text-muted tracking-widest uppercase mb-1">SPICE Override</div>
+            <input class="spice-input" [value]="comp.props.spiceLine || ''"
+                (input)="updateProp('spiceLine', $any($event.target).value)" placeholder="Empty = auto-generated"
+                spellcheck="false" />
+            <div class="font-mono text-[0.56rem] text-muted leading-relaxed mt-1">
+                If set, replaces the auto-generated SPICE line entirely.
+            </div>
+        </div>
+        }
+
+        <!-- Delete -->
+        <button class="delete-btn" (click)="deleteSelected()">✕ Delete {{ comp.id }}</button>
+        } @else {
+        <!-- Empty hint -->
+        <div class="flex flex-col items-center justify-center h-full gap-2.5 opacity-40 text-center">
+            <p class="text-[0.85rem] font-sans leading-relaxed">Select a component<br>or add one from<br>the
+                palette</p>
+        </div>
+        }
+    </div>
+
+</div>

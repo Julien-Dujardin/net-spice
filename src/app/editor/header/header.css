@@ -1,0 +1,290 @@
+.palette-btn {
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    padding: 6px 10px;
+    background: var(--color-s3);
+    color: var(--color-text);
+    border: 1px solid var(--color-border2);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.palette-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.palette-btn.active {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    border-color: var(--color-accent);
+}
+
+.palette-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    border-color: var(--color-border2);
+    color: var(--color-muted);
+}
+
+.palette-btn:disabled:hover {
+    border-color: var(--color-border2);
+    color: var(--color-muted);
+}
+
+.run-btn {
+    margin-left: auto;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    padding: 6px 15px;
+    background: transparent;
+    color: var(--color-green);
+    border: 1px solid var(--color-green);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+
+.run-btn:hover:not(:disabled) {
+    background: var(--color-green);
+    color: var(--color-bg);
+    box-shadow: 0 0 16px rgba(0, 232, 144, 0.3);
+}
+
+.run-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* Probe dropdown menu */
+.probe-menu-container {
+    position: relative;
+}
+
+.menu-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+}
+
+.probe-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 100;
+    min-width: 180px;
+    background: var(--color-s2);
+    border: 1px solid var(--color-border2);
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    padding: 4px 0;
+    animation: dropdown-fade 0.12s ease-out;
+}
+
+@keyframes dropdown-fade {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.probe-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    padding: 8px 14px;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: background 0.1s;
+    text-align: left;
+}
+
+.probe-dropdown-item:hover {
+    background: var(--color-s3);
+    color: var(--color-accent);
+}
+
+.probe-dropdown-divider {
+    height: 1px;
+    background: var(--color-border2);
+    margin: 4px 8px;
+}
+
+/* Error indicator */
+.error-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    background: transparent;
+    border: 1px solid var(--color-border2);
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    transition: all 0.15s;
+}
+
+.error-indicator.has-errors {
+    border-color: var(--color-red);
+}
+
+.error-indicator.has-warnings {
+    border-color: var(--color-orange);
+}
+
+.error-indicator:hover {
+    background: var(--color-s3);
+}
+
+.error-badge {
+    color: var(--color-red);
+}
+
+.warning-badge {
+    color: var(--color-orange);
+}
+
+/* Sim config button */
+.sim-config-btn {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.05em;
+    padding: 6px 12px;
+    background: var(--color-s3);
+    color: var(--color-text);
+    border: 1px solid var(--color-border2);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.sim-config-btn:hover {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+/* Components dropdown menu */
+.components-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    z-index: 100;
+    min-width: 280px;
+    max-height: 440px;
+    overflow-y: auto;
+    background: var(--color-s2);
+    border: 1px solid var(--color-border2);
+    border-radius: 6px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    padding: 4px 0;
+    animation: dropdown-fade 0.12s ease-out;
+}
+
+.components-category-label {
+    font-family: var(--font-mono);
+    font-size: 0.58rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+    padding: 8px 14px 4px;
+    border-top: 1px solid var(--color-border2);
+}
+
+.components-category-label:first-child {
+    border-top: none;
+    padding-top: 6px;
+}
+
+.components-generic-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.components-generic-row {
+    display: flex;
+    align-items: stretch;
+}
+
+.components-generic-row .probe-dropdown-item {
+    border-radius: 0;
+}
+
+.components-expand-btn {
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    border-left: 1px solid var(--color-border2);
+    color: var(--color-muted);
+    font-size: 0.65rem;
+    cursor: pointer;
+    transition: all 0.12s;
+}
+
+.components-expand-btn:hover {
+    background: var(--color-s3);
+    color: var(--color-accent);
+}
+
+.components-expand-btn.expanded {
+    color: var(--color-accent);
+    transform: rotate(180deg);
+}
+
+.components-specifics-list {
+    border-top: 1px solid var(--color-border2);
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.components-specific-item {
+    padding-left: 28px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 2px !important;
+}
+
+.components-part-number {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--color-accent);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+}
+
+.components-part-desc {
+    font-size: 0.6rem;
+    color: var(--color-muted);
+    line-height: 1.2;
+}
+
+.components-import-btn {
+    opacity: 0.8;
+    font-style: italic;
+}
+
+.components-import-btn:hover {
+    opacity: 1;
+}

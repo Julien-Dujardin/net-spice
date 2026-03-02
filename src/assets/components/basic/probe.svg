@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-16 -20 32 44" width="32" height="44">
+  <!-- Probe symbol - vertical, pin at (0,20) -->
+  <polygon points="0,20 -10,2 10,2" fill="rgba(255,224,75,0.08)" stroke="#ffe04b" stroke-width="2"/>
+  <circle cx="0" cy="-6" r="8" fill="rgba(255,224,75,0.05)" stroke="#ffe04b" stroke-width="2"/>
+  <line x1="0" y1="2" x2="0" y2="-14" stroke="#ffe04b" stroke-width="2" stroke-linecap="round"/>
+  <circle cx="0" cy="20" r="3" fill="#ffe04b"/>
+</svg>

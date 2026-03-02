@@ -1,0 +1,334 @@
+<div class="home-root">
+
+    <!-- ── Nav ── -->
+    <nav class="home-nav">
+        <div class="nav-logo">NET-SPICE</div>
+        <div class="nav-links">
+            <a href="https://github.com/Julien-Dujardin/net-SPICE" target="_blank" rel="noopener" class="nav-link">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+                GitHub
+            </a>
+            <a routerLink="/editor" class="nav-cta">Open Editor</a>
+        </div>
+    </nav>
+
+    <!-- ── Hero ── -->
+    <section class="hero">
+        <!-- Background circuit decoration -->
+        <div class="hero-circuit-bg" aria-hidden="true">
+            <svg viewBox="0 0 800 400" fill="none" class="circuit-lines">
+                <!-- Horizontal lines -->
+                <line x1="0" y1="100" x2="200" y2="100" stroke="var(--color-border2)" stroke-width="1.5"
+                    opacity="0.3" />
+                <line x1="250" y1="100" x2="550" y2="100" stroke="var(--color-border2)" stroke-width="1.5"
+                    opacity="0.2" />
+                <line x1="0" y1="300" x2="350" y2="300" stroke="var(--color-border2)" stroke-width="1.5"
+                    opacity="0.15" />
+                <line x1="450" y1="300" x2="800" y2="300" stroke="var(--color-border2)" stroke-width="1.5"
+                    opacity="0.2" />
+                <!-- Vertical lines -->
+                <line x1="200" y1="100" x2="200" y2="300" stroke="var(--color-border2)" stroke-width="1.5"
+                    opacity="0.2" />
+                <line x1="550" y1="50" x2="550" y2="200" stroke="var(--color-border2)" stroke-width="1.5"
+                    opacity="0.15" />
+                <line x1="650" y1="150" x2="650" y2="350" stroke="var(--color-border2)" stroke-width="1.5"
+                    opacity="0.1" />
+                <!-- Dots (nodes) -->
+                <circle cx="200" cy="100" r="4" fill="var(--color-green)" opacity="0.4" />
+                <circle cx="200" cy="300" r="4" fill="var(--color-orange)" opacity="0.3" />
+                <circle cx="550" cy="100" r="4" fill="var(--color-purple)" opacity="0.35" />
+                <circle cx="650" cy="300" r="3" fill="var(--color-green)" opacity="0.2" />
+                <!-- Resistor box -->
+                <rect x="290" y="88" width="60" height="24" rx="3" stroke="var(--color-orange)" stroke-width="1.5"
+                    fill="none" opacity="0.25" />
+                <!-- Capacitor -->
+                <line x1="415" y1="282" x2="415" y2="318" stroke="var(--color-accent)" stroke-width="2" opacity="0.2" />
+                <line x1="435" y1="282" x2="435" y2="318" stroke="var(--color-accent)" stroke-width="2" opacity="0.2" />
+            </svg>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Free &amp; Open Source
+            </div>
+            <h1 class="hero-title">
+                Circuit simulation.<br />
+                <span class="hero-highlight">Right in your browser.</span>
+            </h1>
+            <p class="hero-subtitle">
+                A powerful SPICE editor that runs entirely on your machine.<br />
+                No account. No cloud. No limits.
+            </p>
+            <div class="hero-actions">
+                <a routerLink="/editor" class="btn-primary">
+                    Open Editor
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="8" x2="13" y2="8" />
+                        <polyline points="9,4 13,8 9,12" />
+                    </svg>
+                </a>
+                <a href="https://github.com/Julien-Dujardin/net-SPICE" target="_blank" rel="noopener"
+                    class="btn-secondary">
+                    View Source
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Pillars ── -->
+    <section class="pillars">
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-icon" style="color: var(--color-green)">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="3" width="20" height="14" rx="2" />
+                        <line x1="8" y1="21" x2="16" y2="21" />
+                        <line x1="12" y1="17" x2="12" y2="21" />
+                    </svg>
+                </div>
+                <h3 class="pillar-title">Runs locally</h3>
+                <p class="pillar-desc">
+                    Your circuits never leave your machine. Everything executes in-browser using WebAssembly — zero
+                    server
+                    dependency.
+                </p>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon" style="color: var(--color-purple)">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                        <circle cx="12" cy="7" r="4" />
+                        <line x1="4" y1="4" x2="20" y2="20" stroke="currentColor" stroke-width="2" opacity="0.4" />
+                    </svg>
+                </div>
+                <h3 class="pillar-title">No account required</h3>
+                <p class="pillar-desc">
+                    Open the editor and start building immediately. No sign-up, no tracking, no telemetry. Just you and
+                    your
+                    circuit.
+                </p>
+            </div>
+
+            <div class="pillar-card">
+                <div class="pillar-icon" style="color: var(--color-orange)">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                    </svg>
+                </div>
+                <h3 class="pillar-title">Open source</h3>
+                <p class="pillar-desc">
+                    Free forever. Inspect the code, contribute, or fork it. Built for the community, by the community.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Capabilities ── -->
+    <section class="capabilities">
+        <div class="capabilities-header">
+            <h2 class="section-title">Everything you need</h2>
+            <p class="section-subtitle">
+                A complete SPICE workflow — from schematic capture to waveform analysis.
+            </p>
+        </div>
+
+        <div class="capabilities-grid">
+            <div class="capability-card capability-large">
+                <div class="capability-visual">
+                    <div class="schematic-preview" aria-hidden="true">
+                        <!-- Stylized mini schematic -->
+                        <svg viewBox="0 0 320 180" fill="none">
+                            <!-- Wires -->
+                            <line x1="40" y1="40" x2="40" y2="140" stroke="var(--color-green)" stroke-width="2"
+                                opacity="0.7" />
+                            <line x1="40" y1="40" x2="140" y2="40" stroke="var(--color-green)" stroke-width="2"
+                                opacity="0.7" />
+                            <line x1="200" y1="40" x2="280" y2="40" stroke="var(--color-green)" stroke-width="2"
+                                opacity="0.7" />
+                            <line x1="280" y1="40" x2="280" y2="140" stroke="var(--color-green)" stroke-width="2"
+                                opacity="0.7" />
+                            <line x1="40" y1="140" x2="280" y2="140" stroke="var(--color-green)" stroke-width="2"
+                                opacity="0.7" />
+                            <!-- Resistor -->
+                            <rect x="140" y="28" width="60" height="24" rx="3" stroke="var(--color-orange)"
+                                stroke-width="2" fill="rgba(255,140,0,0.06)" />
+                            <text x="170" y="44" text-anchor="middle" fill="var(--color-orange)" font-size="11"
+                                font-family="Space Mono, monospace">1kΩ</text>
+                            <!-- Capacitor -->
+                            <line x1="270" y1="70" x2="290" y2="70" stroke="var(--color-accent)" stroke-width="2"
+                                opacity="0.8" />
+                            <line x1="270" y1="85" x2="290" y2="85" stroke="var(--color-accent)" stroke-width="2"
+                                opacity="0.8" />
+                            <text x="305" y="81" fill="var(--color-accent)" font-size="10"
+                                font-family="Space Mono, monospace">10nF</text>
+                            <!-- Voltage source -->
+                            <circle cx="40" cy="90" r="18" stroke="var(--color-purple)" stroke-width="2"
+                                fill="rgba(179,136,255,0.05)" />
+                            <text x="40" y="86" text-anchor="middle" fill="var(--color-purple)" font-size="12"
+                                font-family="Space Mono, monospace">+</text>
+                            <text x="40" y="100" text-anchor="middle" fill="var(--color-purple)" font-size="12"
+                                font-family="Space Mono, monospace">−</text>
+                            <!-- Ground -->
+                            <line x1="155" y1="140" x2="155" y2="155" stroke="var(--color-muted)" stroke-width="2" />
+                            <line x1="142" y1="155" x2="168" y2="155" stroke="var(--color-muted)" stroke-width="2" />
+                            <line x1="146" y1="160" x2="164" y2="160" stroke="var(--color-muted)" stroke-width="1.5" />
+                            <line x1="150" y1="165" x2="160" y2="165" stroke="var(--color-muted)" stroke-width="1" />
+                            <!-- Node dots -->
+                            <circle cx="40" cy="40" r="3" fill="var(--color-green)" />
+                            <circle cx="280" cy="40" r="3" fill="var(--color-green)" />
+                            <circle cx="40" cy="140" r="3" fill="var(--color-green)" />
+                            <circle cx="280" cy="140" r="3" fill="var(--color-green)" />
+                            <circle cx="155" cy="140" r="3" fill="var(--color-green)" />
+                            <!-- Probe -->
+                            <circle cx="280" cy="40" r="7" stroke="var(--color-probe1)" stroke-width="1.5"
+                                fill="none" />
+                            <circle cx="280" cy="40" r="2" fill="var(--color-probe1)" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="capability-info">
+                    <span class="capability-tag">Schematic Editor</span>
+                    <h3 class="capability-title">Draw circuits visually</h3>
+                    <p class="capability-desc">
+                        Place resistors, capacitors, voltage sources, transistors, op-amps and more from a rich
+                        component library.
+                        Wire them together on an infinite canvas with snap-to-grid precision.
+                    </p>
+                </div>
+            </div>
+
+            <div class="capability-card">
+                <div class="capability-info">
+                    <span class="capability-tag">SPICE Engine</span>
+                    <h3 class="capability-title">ngspice in WebAssembly</h3>
+                    <p class="capability-desc">
+                        Industry-standard ngspice compiled to WebAssembly. Run transient, AC, DC sweep, and operating
+                        point analyses
+                        — instantly, offline.
+                    </p>
+                </div>
+            </div>
+
+            <div class="capability-card">
+                <div class="capability-info">
+                    <span class="capability-tag">Waveform Viewer</span>
+                    <h3 class="capability-title">Analyze results in real-time</h3>
+                    <p class="capability-desc">
+                        Place voltage and current probes on your circuit. View simulation results as interactive,
+                        zoomable
+                        waveforms with multiple traces.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Components showcase ── -->
+    <section class="components-showcase">
+        <h2 class="section-title">Component library</h2>
+        <p class="section-subtitle">
+            From basic passives to semiconductor devices — everything you need to design real circuits.
+        </p>
+
+        <div class="components-strip">
+            <div class="comp-item">
+                <img src="assets/components/basic/resistor.svg" alt="Resistor" />
+                <span>Resistor</span>
+            </div>
+            <div class="comp-item">
+                <img src="assets/components/basic/capacitor.svg" alt="Capacitor" />
+                <span>Capacitor</span>
+            </div>
+            <div class="comp-item">
+                <img src="assets/components/basic/inductor.svg" alt="Inductor" />
+                <span>Inductor</span>
+            </div>
+            <div class="comp-item">
+                <img src="assets/components/basic/voltage-source.svg" alt="Source" />
+                <span>Source</span>
+            </div>
+            <div class="comp-item">
+                <img src="assets/components/basic/diode.svg" alt="Diode" />
+                <span>Diode</span>
+            </div>
+            <div class="comp-item">
+                <img src="assets/components/basic/npn.svg" alt="NPN" />
+                <span>NPN</span>
+            </div>
+            <div class="comp-item">
+                <img src="assets/components/basic/pnp.svg" alt="PNP" />
+                <span>PNP</span>
+            </div>
+            <div class="comp-item">
+                <img src="assets/components/basic/nmos.svg" alt="NMOS" />
+                <span>NMOS</span>
+            </div>
+            <div class="comp-item">
+                <img src="assets/components/basic/pmos.svg" alt="PMOS" />
+                <span>PMOS</span>
+            </div>
+            <div class="comp-item">
+                <img src="assets/components/basic/opamp.svg" alt="Op-Amp" />
+                <span>Op-Amp</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Examples ── -->
+    <section class="examples">
+        <h2 class="section-title">Example circuits</h2>
+        <p class="section-subtitle">
+            Click any example to open it directly in the editor.
+        </p>
+
+        <div class="examples-grid">
+            @for (ex of examples(); track ex.name) {
+            <button class="example-card" (click)="openExample(ex)">
+                <div class="example-img-wrap">
+                    <img [src]="ex.image" [alt]="ex.name" loading="lazy" />
+                </div>
+                <span class="example-name">{{ ex.name }}</span>
+            </button>
+            }
+        </div>
+    </section>
+
+    <!-- ── CTA ── -->
+    <section class="final-cta">
+        <h2 class="cta-title">Start simulating</h2>
+        <p class="cta-subtitle">No download. No install. No account.<br />Just open and build.</p>
+        <a routerLink="/editor" class="btn-primary btn-lg">
+            Open Editor
+            <svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="3" y1="8" x2="13" y2="8" />
+                <polyline points="9,4 13,8 9,12" />
+            </svg>
+        </a>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="home-footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <span class="footer-logo">NET-SPICE</span>
+                <span class="footer-copy">Open-source SPICE editor</span>
+            </div>
+            <div class="footer-links">
+                <a routerLink="/editor">Editor</a>
+                <a href="https://github.com/Julien-Dujardin/net-SPICE" target="_blank" rel="noopener">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+</div>

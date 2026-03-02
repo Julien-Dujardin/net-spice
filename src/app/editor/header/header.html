@@ -1,0 +1,173 @@
+<!-- HEADER -->
+<header class="flex items-center gap-4 px-5 py-2 bg-s1 border-b border-border shrink-0">
+    <!-- Logo -->
+    <div class="flex items-center gap-2 font-sans text-[1rem] text-accent tracking-widest">
+        <a routerLink="/home">NET-SPICE</a>
+    </div>
+
+    <div class="w-px h-6 bg-border mx-1"></div>
+
+    <!-- File menu -->
+    <div class="probe-menu-container">
+        <button class="palette-btn" (click)="toggleFileMenu()">
+            File
+            <span class="text-[0.6rem] ml-0.5">▾</span>
+        </button>
+        @if (fileMenuOpen) {
+        <div class="menu-backdrop" (click)="closeFileMenu()"></div>
+        <div class="probe-dropdown">
+            <button class="probe-dropdown-item" (click)="exportNetlist()">
+                Export Netlist (.cir)
+            </button>
+            <button class="probe-dropdown-item" (click)="exportProject()">
+                Export Project (.nsp)
+            </button>
+            <div class="probe-dropdown-divider"></div>
+            <button class="probe-dropdown-item" (click)="importProject()">
+                Import Project (.nsp)
+            </button>
+        </div>
+        }
+    </div>
+
+    <div class="w-px h-6 bg-border mx-1"></div>
+
+    <!-- Component buttons (responsive) + menus -->
+    <div class="flex gap-1.5 items-center">
+        @for (bc of visibleBasics(); track bc.type) {
+        <button class="palette-btn" (click)="startPlace(bc.type)">
+            <span class="text-[0.9rem]" [style]="bc.colorStyle">{{ bc.symbol }}</span>{{ bc.label }}
+        </button>
+        }
+
+        <!-- Components library dropdown -->
+        <div class="probe-menu-container">
+            <button class="palette-btn" (click)="toggleComponentsMenu()">
+                <span class="text-[0.9rem]" style="color:#69f0ae">⊞</span>Components
+                <span class="text-[0.6rem] ml-0.5">▾</span>
+            </button>
+            @if (state.componentsMenuOpen()) {
+            <div class="menu-backdrop" (click)="closeComponentsMenu()"></div>
+            <div class="components-dropdown">
+                <!-- Basic -->
+                <div class="components-category-label">Basic</div>
+                @for (bc of basicComponents; track bc.type) {
+                <div class="components-generic-group">
+                    <button class="probe-dropdown-item flex-1" (click)="placeGenericAndClose(bc.type)">
+                        <span [style]="bc.colorStyle">{{ bc.symbol }}</span>
+                        {{ bc.fullName }}
+                    </button>
+                </div>
+                }
+                <!-- Library categories -->
+                @for (entry of componentCategories | keyvalue; track entry.key) {
+                <div class="components-category-label">{{ entry.key }}</div>
+                @for (generic of entry.value; track generic.key) {
+                <div class="components-generic-group">
+                    <button class="probe-dropdown-item flex-1" (click)="placeGenericAndClose(generic.key)">
+                        <span [style.color]="generic.color">{{ generic.symbol }}</span>
+                        {{ generic.name }}
+                    </button>
+                </div>
+                }
+                }
+            </div>
+            }
+        </div>
+
+        <div class="w-px h-6 bg-border mx-1"></div>
+
+        <!-- Probe dropdown menu -->
+        <div class="probe-menu-container">
+            <button class="palette-btn" (click)="toggleProbeMenu()">
+                <span class="text-[0.9rem] text-probe1">⊙</span>Probes
+                <span class="text-[0.6rem] ml-0.5">▾</span>
+            </button>
+            @if (state.probeMenuOpen()) {
+            <div class="menu-backdrop" (click)="closeProbeMenu()"></div>
+            <div class="probe-dropdown">
+                <button class="probe-dropdown-item" (click)="placeProbeAndClose('PROBE')">
+                    <span class="text-probe1">⊙</span> Voltage Probe
+                </button>
+                <button class="probe-dropdown-item" (click)="placeProbeAndClose('IPROBE')">
+                    <span style="color: #ff6bb5">⊗</span> Current Probe
+                </button>
+                <div class="probe-dropdown-divider"></div>
+                <button class="probe-dropdown-item" (click)="openProbeList()">
+                    <span>☰</span> Probe List
+                </button>
+            </div>
+            }
+        </div>
+
+        <!-- Net labels dropdown -->
+        <div class="probe-menu-container">
+            <button class="palette-btn" (click)="toggleNetMenu()">
+                <span class="text-[0.9rem]" style="color:#4dd0e1">⊳</span>Net
+                <span class="text-[0.6rem] ml-0.5">▾</span>
+            </button>
+            @if (state.netMenuOpen()) {
+            <div class="menu-backdrop" (click)="closeNetMenu()"></div>
+            <div class="probe-dropdown">
+                <button class="probe-dropdown-item" (click)="placeNetAndClose('NET_IN')">
+                    <span style="color:#4dd0e1">▷</span> Net In
+                </button>
+                <button class="probe-dropdown-item" (click)="placeNetAndClose('NET_OUT')">
+                    <span style="color:#4dd0e1">◁</span> Net Out
+                </button>
+                <button class="probe-dropdown-item" (click)="placeNetAndClose('NET_INOUT')">
+                    <span style="color:#4dd0e1">⬡</span> Net In/Out
+                </button>
+            </div>
+            }
+        </div>
+
+        <button class="palette-btn" [class.active]="state.wireMode()" (click)="toggleWireMode()">
+            <span class="text-[0.9rem]">╌</span>Wire
+        </button>
+    </div>
+
+    <div class="w-px h-6 bg-border mx-0.2"></div>
+
+    <!-- Undo/Redo -->
+    <button class="palette-btn" [disabled]="!undoRedo.canUndo()" (click)="undoRedo.undo()" title="Undo (Ctrl+Z)">
+        <span class="text-[0.9rem]">↶</span>
+    </button>
+    <button class="palette-btn" [disabled]="!undoRedo.canRedo()" (click)="undoRedo.redo()" title="Redo (Ctrl+Y)">
+        <span class="text-[0.9rem]">↷</span>
+    </button>
+
+    <div class="w-px h-6 bg-border mx-1"></div>
+
+    <!-- Status -->
+    <span class="font-mono text-[0.65rem] text-muted whitespace-nowrap">{{ state.statusMessage() }}</span>
+
+    <!-- Zoom (shown when space allows) -->
+    @if (showZoom()) {
+    <span class="font-mono text-[0.65rem] text-muted min-w-9 text-right">{{ state.zoomLevel() }}%</span>
+    }
+
+    <div class="w-px h-6 bg-border mx-1"></div>
+
+    <!-- Rewire -->
+    <button class="palette-btn" (click)="rewire()"
+        title="Rewire: delete all wires and re-create clean connections preserving the same topology">
+        Rewire
+    </button>
+
+    <!-- Sim Config -->
+    <button class="sim-config-btn" (click)="state.toggleSimConfig()" title="Simulation configuration">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="8" r="2.5" />
+            <path
+                d="M8 1v2M8 13v2M1 8h2M13 8h2M3.05 3.05l1.41 1.41M11.54 11.54l1.41 1.41M3.05 12.95l1.41-1.41M11.54 4.46l1.41-1.41" />
+        </svg>
+        SIM
+    </button>
+
+    <!-- Run -->
+    <button class="run-btn" [disabled]="!state.isReady()" (click)="onRun()">
+        ▶
+    </button>
+</header>

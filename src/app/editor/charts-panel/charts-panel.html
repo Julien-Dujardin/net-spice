@@ -1,0 +1,50 @@
+<div class="charts-container">
+    <!-- Top-center handle to hide (mirrors the show button) -->
+    <button class="charts-hide-handle" (click)="close()" title="Hide charts">
+        <svg width="16" height="16" viewBox="0 0 16 16">
+            <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+
+    <div class="charts-header">
+        <div class="charts-header-left">
+            <h4 class="font-mono text-[0.6rem] text-muted tracking-widest uppercase">// Charts</h4>
+            @if (canAddChart()) {
+            <div class="add-chart-buttons">
+                <button class="add-chart-btn" (click)="addChart('time')" title="Add time-domain chart">
+                    + Time
+                </button>
+                <button class="add-chart-btn" (click)="addChart('freq')" title="Add frequency-domain chart">
+                    + Freq
+                </button>
+            </div>
+            }
+        </div>
+    </div>
+
+    <div class="charts-content">
+        @if (charts().length === 0) {
+        <div class="empty-state">
+            <p class="empty-message">No charts</p>
+            <p class="empty-hint">Add up to 3 charts (Time / Frequency)</p>
+        </div>
+        } @else {
+        <div class="chart-grid" [class.one]="charts().length === 1" [class.two]="charts().length === 2"
+            [class.three]="charts().length === 3">
+            @for (chart of charts(); track chart.id) {
+            <div class="chart-pane">
+                <div class="chart-header">
+                    <span class="chart-type-badge" [class.time]="chart.type === 'time'"
+                        [class.freq]="chart.type === 'freq'">
+                        {{ chart.type === 'time' ? 'Time' : 'Freq' }}
+                    </span>
+                    <button class="chart-delete-btn" (click)="removeChart(chart.id)" title="Remove chart">✕</button>
+                </div>
+                <div class="chart-wrapper" [id]="'chart-wrapper-' + chart.id"></div>
+            </div>
+            }
+        </div>
+        }
+    </div>
+</div>
