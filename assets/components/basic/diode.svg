@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-44 -14 88 28" width="88" height="28">
+  <!-- Diode symbol - horizontal, anode at left (-40), cathode at right (40) -->
+  <line x1="-40" y1="0" x2="-10" y2="0" stroke="#ff4444" stroke-width="2" stroke-linecap="round"/>
+  <line x1="10" y1="0" x2="40" y2="0" stroke="#ff4444" stroke-width="2" stroke-linecap="round"/>
+  <!-- Triangle (anode side) -->
+  <polygon points="-10,0 10,-10 10,10" fill="rgba(255,68,68,0.08)" stroke="#ff4444" stroke-width="2" stroke-linejoin="round"/>
+  <!-- Cathode bar -->
+  <line x1="10" y1="-10" x2="10" y2="10" stroke="#ff4444" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="-40" cy="0" r="3" fill="#ff4444"/>
+  <circle cx="40" cy="0" r="3" fill="#ff4444"/>
+</svg>

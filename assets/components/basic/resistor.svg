@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-44 -14 88 28" width="88" height="28">
+  <!-- Resistor symbol - horizontal, pins at ±40 -->
+  <line x1="-40" y1="0" x2="-16" y2="0" stroke="#ff8c00" stroke-width="2" stroke-linecap="round"/>
+  <line x1="16" y1="0" x2="40" y2="0" stroke="#ff8c00" stroke-width="2" stroke-linecap="round"/>
+  <rect x="-16" y="-8" width="32" height="16" rx="2" fill="rgba(255,140,0,0.05)" stroke="#ff8c00" stroke-width="2"/>
+  <circle cx="-40" cy="0" r="3" fill="#ff8c00"/>
+  <circle cx="40" cy="0" r="3" fill="#ff8c00"/>
+</svg>

@@ -1,0 +1,197 @@
+{
+  "version": 1,
+  "components": [
+    {
+      "id": "V1",
+      "type": "V",
+      "x": 140,
+      "y": 200,
+      "rotation": 0,
+      "props": {
+        "waveform": "SIN",
+        "amp": "5",
+        "freq": "1000",
+        "offset": "0",
+        "dc": "5",
+        "pulse_v1": "0",
+        "pulse_v2": "5",
+        "pulse_td": "0",
+        "pulse_tr": "1u",
+        "pulse_tf": "1u",
+        "pulse_pw": "0.5m",
+        "pulse_per": "1m"
+      }
+    },
+    {
+      "id": "R2",
+      "type": "R",
+      "x": 260,
+      "y": 160,
+      "rotation": 0,
+      "props": {
+        "value": "1k"
+      }
+    },
+    {
+      "id": "C3",
+      "type": "C",
+      "x": 380,
+      "y": 240,
+      "rotation": 0,
+      "props": {
+        "value": "1u"
+      }
+    },
+    {
+      "id": "GND4",
+      "type": "GND",
+      "x": 140,
+      "y": 280,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "GND5",
+      "type": "GND",
+      "x": 380,
+      "y": 320,
+      "rotation": 0,
+      "props": {}
+    },
+    {
+      "id": "PROBE6",
+      "type": "PROBE",
+      "x": 140,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "IN"
+      }
+    },
+    {
+      "id": "PROBE7",
+      "type": "PROBE",
+      "x": 380,
+      "y": 120,
+      "rotation": 0,
+      "props": {
+        "label": "OUT"
+      }
+    }
+  ],
+  "wires": [
+    {
+      "id": "w8_0",
+      "points": [
+        {
+          "x": 140,
+          "y": 160
+        },
+        {
+          "x": 220,
+          "y": 160
+        }
+      ]
+    },
+    {
+      "id": "w9_0",
+      "points": [
+        {
+          "x": 300,
+          "y": 160
+        },
+        {
+          "x": 380,
+          "y": 160
+        }
+      ]
+    },
+    {
+      "id": "w10_0",
+      "points": [
+        {
+          "x": 140,
+          "y": 240
+        },
+        {
+          "x": 140,
+          "y": 260
+        }
+      ]
+    },
+    {
+      "id": "w11_0",
+      "points": [
+        {
+          "x": 380,
+          "y": 280
+        },
+        {
+          "x": 380,
+          "y": 300
+        }
+      ]
+    },
+    {
+      "id": "w12_0",
+      "points": [
+        {
+          "x": 140,
+          "y": 140
+        },
+        {
+          "x": 140,
+          "y": 160
+        }
+      ]
+    },
+    {
+      "id": "w1772442185707_0_zhd9",
+      "points": [
+        {
+          "x": 380,
+          "y": 140
+        },
+        {
+          "x": 380,
+          "y": 160
+        }
+      ]
+    },
+    {
+      "id": "w1772442185708_1_mech",
+      "points": [
+        {
+          "x": 380,
+          "y": 160
+        },
+        {
+          "x": 380,
+          "y": 200
+        }
+      ]
+    }
+  ],
+  "simConfig": {
+    "type": "tran",
+    "tran": {
+      "stopTime": "10m",
+      "step": "1u",
+      "startSave": "0",
+      "uic": false
+    },
+    "ac": {
+      "variation": "dec",
+      "npoints": "100",
+      "fstart": "1",
+      "fstop": "1Meg"
+    },
+    "dc": {
+      "source": "",
+      "start": "0",
+      "stop": "5",
+      "step": "0.1"
+    },
+    "customDirectives": ""
+  }
+}
