@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="-20 -44 40 88" width="40" height="88">
-  <!-- Capacitor symbol - vertical, pins at (0,±40) -->
-  <line x1="0" y1="-40" x2="0" y2="-8" stroke="#00c8f0" stroke-width="2" stroke-linecap="round"/>
-  <line x1="0" y1="8" x2="0" y2="40" stroke="#00c8f0" stroke-width="2" stroke-linecap="round"/>
-  <line x1="-14" y1="-8" x2="14" y2="-8" stroke="#00c8f0" stroke-width="3" stroke-linecap="round"/>
-  <line x1="-14" y1="8" x2="14" y2="8" stroke="#00c8f0" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="0" cy="-40" r="3" fill="#00c8f0"/>
-  <circle cx="0" cy="40" r="3" fill="#00c8f0"/>
-</svg>
